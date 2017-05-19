@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Map</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id= "start">
+            <div class="box">
+                <div class="text-center">
+                    <h3 style="padding-bottom:10px">Famous Restaurants in Different Cities of India!</h3>
+                </div>
+                <div class="upper-btn text-center" style="padding-bottom:10px">
+                <input class="btn" type="submit" value="SHOW LIST" id="show-listings" name="show" data-bind="click: showMarkers">
+                <input class="btn" type="submit" value="HIDE LIST" id="hide-listings" name="hide" data-bind="click: hideMarkers"><br>
+                </div>
+                <div class="text-center btn-div" style="padding-bottom:10px">
+                    <input style="margin:5px" class="btn" type="submit" value="Chandigarh" id="Chandigarh" name="Chandigarh" data-bind="click: Chandigarh">
+                    <input style="margin:5px" class="btn" type="submit" value="Delhi" id="Delhi" name="Delhi" data-bind="click: Delhi">
+                    <input style="margin:5px" class="btn" type="submit" value="Mumbai" id="Mumbai" name="Mumbai" data-bind="click: Mumbai">
+                    <input style="margin:5px" class="btn" type="submit" value="Banglore" id="Banglore" name="Banglore" data-bind="click: Banglore"><br>
+                </div>
+                <center>
+                <input id="weather" type="button" class="btn" value="Show Weather for this City" data-bind="click: weather"><br>
+                
+                <article id="weather" data-bind="visible: showWeatherDetails">
+                            <div id="weather">
+                                <div>
+                                    <img width="50px" height="50px" data-bind="attr:{src: imageWeatherPath}" />
+                                </div>
+                                <div>
+                                    <div data-bind="html: WeatherData"></div>
+                                </div>
+                            </div>
+                
+                </article>
+                </center>
+                <br><br>
+                <div>
+                    Enter restaurant name to filter:
+                </div>  
+                <div class="out">
+                <input type="input" name="place" placeholder="Input the location to refine search" class="in" data-bind = 'value : TextToSearch , valueUpdate : "keyup"'>
+                </div>
+                <h4> List of Restaurants </h4>
+                <div class="list" style="overflow-y: scroll; height:150px">
+                    <ul data-bind = "foreach : finalRestList" >
+                        <li data-bind = "text : $data , click : highlightMarker"></li>
+                    </ul>
+                </div>
+                
+                <div data-bind = "visible : isThereAnyError">
+                    <h4 data-bind = "text : errorText"></h4>
+                </div>
+                
+            </div>
+            
+            <div class="gp1" style="color:white; padding:10px">
+                <h4><b>MADE BY GUPREET KAUR</b></h4>
+            </div>
+            <div id="map"></div>
+        </div>
+        <footer>
+            <script src="js/knockout-3.2.0.js" ></script>
+            <script src="js/application.js"></script>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi8sdJFlohMIGwuWuMwcdxeMZYWRcQ9U0&v=3&callback=initMap" onerror = "ErrorMethod()"></script>
+        </footer>
+    </body>
+</html>

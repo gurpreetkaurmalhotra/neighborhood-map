@@ -1,0 +1,78 @@
+td, th {
+    border: 1px ;
+    text-align: left;
+    padding: 8px;
+}
+.res-image{
+        width: 100%;
+        height: 100%;
+      }
+#map {
+      bottom:0px;
+      height: 100%;
+        left: 25%;
+        width: 75%;
+      position: absolute;
+      right: 0px;
+}
+
+input {
+    background-color: #ff61a6;
+    color: white;
+}
+
+html,
+      body {
+        background-color: #423 !important;
+        height: 100%;
+      }
+      
+      h1 {
+        color: #525454;
+        text-align: center;
+      }
+
+      .in{
+          width: 100%;
+          border-radius: 4px;
+          padding: 5px;
+      }
+
+
+      #hide-listings{
+        width: 48%;
+      }
+      #show-listings {
+        width: 48%;
+      }     
+      
+      .box {
+      color: white;
+      border: 2px;
+      max-width: 25%;
+      height: 100% !important;
+      text-align: left;
+      overflow: auto;
+}
+
+     @media (max-width: 991px){
+         #start {
+             min-width: 100%;
+         }
+        .box{ 
+          max-height: 300px !important;
+          min-width: 100%;
+          overflow-y: scroll !important;
+        }
+         .gp1 {
+             visibility: hidden;
+         }
+        #map{
+          max-height: 70%;
+          width: 100%;
+          border: 3px ;
+          left: 0%;
+            margin-bottom: 0%;
+            bottom: 0%;
+        }
+}
