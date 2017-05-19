@@ -12,23 +12,6 @@ var longi;
 lati = 12.9716;
 longi = 77.5946;
 
-/*(function($) {
-    var $window = $(window),
-        $html = $('html');
-
-    function resize() {
-        if ($window.width() < 991) {
-            return $document.getElementById("start").addClass('row');
-        }
-
-        $html.removeClass('row');
-    }
-
-    $window
-        .resize(resize)
-        .trigger('resize');
-})(jQuery);
-*/
 // function that gives lattitude and longitude of Chandigarh city
 function Chandigarh() {
 
@@ -40,6 +23,7 @@ function Chandigarh() {
     initMap();
 
 }
+
 // function that gives lattitude and longitude of Delhi city
 function Delhi() {
 
@@ -128,24 +112,28 @@ function highlightMarker( markerTitle ) {
             return;
         }
     }
+
 }
 
 
 // this function provides animation functionality to markers
 function toggleBounce(marker) {
+
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
         marker.setAnimation(null);
     }, 900);
+
 }
 
-function FillInfoWindowWithData(marker , MyInfoWindow)
-{
+function FillInfoWindowWithData(marker , MyInfoWindow) {
+
     var WindowContent = marker.sres;
 
-    if( MyInfoWindow.marker !== marker && MyInfoWindow.marker !== undefined )
-    {    // if no marker or marker is undefined set animation to null
+    if( MyInfoWindow.marker !== marker && MyInfoWindow.marker !== undefined ) {
+        // if no marker or marker is undefined set animation to null
         MyInfoWindow.marker.setAnimation( null );
+
     }
     //setting the marker
 
@@ -165,7 +153,9 @@ function FillInfoWindowWithData(marker , MyInfoWindow)
 
 // Zomato API functionality
 function ZomatoAPI() {
+
     CurrentPageMarkers = []
+
     $.ajax({
         // using zomato api fetch top 15 restaurants around 5000 mt of that location and sort them according to their rating
         url : 'https://developers.zomato.com/api/v2.1/search?count=15&lat=' + lati + '&lon=' + longi + '&radius=5000&sort=rating',
@@ -222,6 +212,7 @@ function ZomatoAPI() {
         ViewModel.isThereAnyError(true);
         ViewModel.errorText('Error while fetching list from Zomato!');
     });
+
 }
 
 // hiding the marker
@@ -230,10 +221,12 @@ function hideMarkers() {
     for (var i = 0; i < CurrentPageMarkers.length; i++) {
         CurrentPageMarkers[i].setVisible(false);
     }
+
 }
 
 // showing the markers
 function showMarkers() {
+
     for (var i = 0; i < CurrentPageMarkers.length; i++) {
         CurrentPageMarkers[i].setVisible(true);
     }
@@ -242,6 +235,7 @@ function showMarkers() {
 
 // showing the weather
 function weather() {
+
     if (ViewModel.showWeatherDetails() == true)
         ViewModel.showWeatherDetails(false);
     else
@@ -294,6 +288,7 @@ function ErrorMethod() {
 
     ViewModel.errorText('Sorry, given map cannot be loaded right now pls try again later');
     ViewModel.isThereAnyError(true);
+
 }
 
 // setting the viewmodel
